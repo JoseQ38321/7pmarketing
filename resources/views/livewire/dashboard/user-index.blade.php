@@ -1,8 +1,8 @@
 <div class="bg-white p-5 rounded-lg">
     <div class="flex items-center justify-between">
         <div class="flex gap-2.5">
-            <input class="form-input rounded-lg border-gray-200 shadow-sm focus:ring-0" type="text" wire:model="search" placeholder="{{ __('Buscar un usuario') }}">
-            <select class="form-input rounded-lg border-gray-200 shadow-sm focus:ring-0" wire:model="roles">
+            <input class="rounded-lg border-gray-200 shadow-sm focus:ring-0" type="text" wire:model="search" placeholder="{{ __('Buscar un usuario') }}">
+            <select class="rounded-lg border-gray-200 shadow-sm focus:ring-0" wire:model="roles">
                 <option value="all" selected>{{ __('Todos') }}</option>
                 <option value="admin">{{ __('Administrador') }}</option>
                 <option value="author">{{ __('Autor') }}</option>
@@ -76,7 +76,7 @@
                                         </span>
                                         Ver
                                     </a>
-                                    <a class="flex items-center gap-2 text-gray-600" href="#">
+                                    <a href="{{ route('user.edit', $user) }}" class="flex items-center gap-2 text-gray-600" href="#">
                                         <span class="material-icons-outlined" style="font-size: 18px;">
                                             edit
                                         </span>
@@ -99,7 +99,7 @@
             {{ $users->links() }}
         </div>
         <div>
-            <select class="form-input rounded-lg border-gray-200 shadow-sm focus:ring-0" wire:model="perPage">
+            <select class="rounded-lg border-gray-200 shadow-sm focus:ring-0" wire:model="perPage">
                 <option value="15">15</option>
                 <option value="25">25</option>
                 <option value="50">50</option>

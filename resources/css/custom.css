@@ -1,0 +1,10 @@
+.form-input {
+    @apply block w-full rounded border border-gray-300 shadow-sm focus:ring-0 focus:border-gray-300 my-1;
+}
+.form-label {
+    @apply text-gray-600 text-sm;
+}
+
+.btn-primary {
+    @apply rounded bg-golden-light text-white uppercase text-sm py-1.5 px-5 hover:bg-golden-dark transition-all ease-in-out;
+}
