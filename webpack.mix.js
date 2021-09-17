@@ -15,7 +15,8 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss'),
-    ]);
+    ])
+    .copy('node_modules/material-icons/css/material-icons.min.css', 'public/css/material-icons.min.css');
 
 if (mix.inProduction()) {
     mix.version();

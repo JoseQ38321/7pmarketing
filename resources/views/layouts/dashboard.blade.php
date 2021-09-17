@@ -10,6 +10,7 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="{{ asset('css/material-icons.min.css') }}" />
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -41,12 +42,12 @@
         <div class="flex-1 flex flex-col overflow-hidden">
             <header class="flex justify-between items-center py-4 px-6 bg-white border-b-4 border-golden-normal">
                 <div class="flex items-center">
-                    <button @click="sidebarOpen = true" class="text-gray-500 hover:scale-105 transition-transform ease-in-out focus:outline-none lg:hidden">
-                        <x-heroicon-o-menu-alt-2 class="h-6 w-6 text-golden-light"/>
+                    <button @click="sidebarOpen = true" class="text-gray-500 hover:scale-105 transition-transform ease-in-out focus:outline-none lg:hidden flex items-center justify-center">
+                        <span class="material-icons text-gray-500">menu</span>
                     </button>
                     <div class="relative mx-4 lg:mx-0">
                         <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
-                            <x-tni-search-o class="h-5 w-5 text-gray-400"/>
+                            <span class="material-icons text-gray-500">search</span>
                         </span>
                         <input class="w-40 sm:w-64 rounded-md border border-gray-400 pl-10 pr-4 focus:border-gray-500 transition ease-in-out" type="text" placeholder="Buscar...">
                     </div>
@@ -56,7 +57,7 @@
                     <div x-data="{ notificationOpen: false }" class="relative">
                         <button @click="notificationOpen = ! notificationOpen"
                             class="flex mx-4 focus:outline-none">
-                            <x-tni-bell-o class="h-5 w-auto text-golden-light" />
+                            <span class="material-icons-outlined text-golden-normal">notifications</span>
                         </button>
 
                         <div x-show="notificationOpen" @click="notificationOpen = false"

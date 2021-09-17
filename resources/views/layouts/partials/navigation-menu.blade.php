@@ -1,17 +1,17 @@
 <nav class="mt-10">
     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-        <x-tabler-dashboard class="h-6 w-auto mr-3"/>
+        <span class="material-icons-outlined h-6 w-auto mr-3">dashboard</span>
         {{ __('Dashboard') }}
     </x-nav-link>
     @can('user.index')
         <x-nav-link href="{{ route('user.index') }}" :active="request()->routeIs('user.index')">
-            <x-phosphor-users class="h-6 w-auto mr-3"/>
+            <span class="material-icons-outlined h-6 w-auto mr-3">people</span>
             {{ __('Users') }}
         </x-nav-link>
     @endcan
     @can('post.index')
         <x-nav-link href="{{ route('post.index') }}" :active="request()->routeIs('post.index')">
-            <x-sui-postcard class="h-6 w-auto mr-3"/>
+            <span class="material-icons-outlined h-6 w-auto mr-3">article</span>
             {{ __('Blogs') }}
         </x-nav-link>
     @endcan

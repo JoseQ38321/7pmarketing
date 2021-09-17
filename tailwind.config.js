@@ -27,6 +27,12 @@ module.exports = {
             borderWidth: {
                 3: '3px',
             },
+            height: {
+                content: 'fit-content',
+            },
+            width: {
+                content: 'fit-content',
+            }
         },
     },
 
