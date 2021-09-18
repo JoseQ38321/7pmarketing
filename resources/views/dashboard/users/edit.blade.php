@@ -4,10 +4,12 @@
     </x-slot>
 
     <div class="mx-auto py-8">
-        <div class="py-4 rounded">
-            <x-jet-banner/>
-        </div>
-        {!! Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'put']) !!}
+        @if (Session::has('flash.banner'))
+            <div class="pb-4 rounded">
+                <x-jet-banner/>
+            </div>
+        @endif
+        {!! Form::model($user, ['route' => ['user.update', $user], 'method' => 'PUT']) !!}
             <div class="md:grid md:grid-cols-3 gap-5 md:gap-10 mb-6">
                 <div class="md:col-span-1 flex justify-between">
                     <div class="flex flex-col gap-2">

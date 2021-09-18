@@ -15,4 +15,10 @@
             {{ __('Blogs') }}
         </x-nav-link>
     @endcan
+    @can('role.index')
+        <x-nav-link href="{{ route('role.index') }}" :active="request()->routeIs('role.index')">
+            <span class="material-icons-outlined h-6 w-auto mr-3">admin_panel_settings</span>
+            {{ __('Roles') }}
+        </x-nav-link>
+    @endcan
 </nav>

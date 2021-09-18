@@ -32,7 +32,10 @@ module.exports = {
             },
             width: {
                 content: 'fit-content',
-            }
+            },
+            height: {
+                content: 'fit-content',
+            },
         },
     },
 

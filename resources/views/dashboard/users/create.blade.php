@@ -4,6 +4,11 @@
     </x-slot>
 
     <div class="mx-auto py-8">
+        @if (Session::has('flash.banner'))
+            <div class="pb-4 rounded">
+                <x-jet-banner/>
+            </div>
+        @endif
         {!! Form::open(['route' => 'user.store']) !!}
             <div class="md:grid md:grid-cols-3 gap-5 md:gap-10 mb-6">
                 <div class="md:col-span-1 flex justify-between">

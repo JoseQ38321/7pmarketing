@@ -4,10 +4,9 @@
             <input class="rounded-lg border-gray-200 shadow-sm focus:ring-0" type="text" wire:model="search" placeholder="{{ __('Buscar un usuario') }}">
             <select class="rounded-lg border-gray-200 shadow-sm focus:ring-0" wire:model="roles">
                 <option value="all" selected>{{ __('Todos') }}</option>
-                <option value="admin">{{ __('Administrador') }}</option>
-                <option value="author">{{ __('Autor') }}</option>
-                <option value="editor">{{ __('Editor') }}</option>
-                <option value="subscriber">{{ __('Suscriptor') }}</option>
+                @foreach ($allRoles as $role)
+                    <option value="{{ $role->name }}">{{ $role->name }}</option>
+                @endforeach
             </select>
         </div>
         <div class="flex gap-2.5">
@@ -70,6 +69,12 @@
                             <div x-data="{ show: false }"  @click.away="show = false" class="relative">
                                 <span @click="show = ! show" class="material-icons-outlined w-5 h-auto text-gray-600 cursor-pointer transition ease-in-out hover:scale-105">more_horiz</span>
                                 <div x-show="show" class="absolute -right-4 bg-gray-50 z-10 shadow-md rounded p-4 w-40 flex flex-col gap-2">
+                                    <a class="flex items-center gap-2 text-gray-600" href="{{ route('message.create', $user) }}">
+                                        <span class="material-icons-outlined" style="font-size: 18px;">
+                                            email
+                                        </span>
+                                        Enviar un mensaje
+                                    </a>
                                     <a class="flex items-center gap-2 text-gray-600" href="#">
                                         <span class="material-icons-outlined" style="font-size: 18px;">
                                             open_in_new

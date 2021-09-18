@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Dashboard;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Spatie\Permission\Models\Role;
 
 class UserIndex extends Component
 {
@@ -42,7 +43,9 @@ class UserIndex extends Component
                     })
                     ->paginate($this->perPage);
 
-        return view('livewire.dashboard.user-index', compact('users'));
+        $allRoles = Role::all();
+
+        return view('livewire.dashboard.user-index', compact('users', 'allRoles'));
     }
 
     public function confirmUserDeletion($id)
