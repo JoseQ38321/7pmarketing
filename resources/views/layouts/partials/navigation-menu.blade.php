@@ -3,6 +3,10 @@
         <span class="material-icons-outlined h-6 w-auto mr-3">dashboard</span>
         {{ __('Dashboard') }}
     </x-nav-link>
+    <x-nav-link href="{{ route('media') }}" :active="request()->routeIs('media')">
+        <span class="material-icons-outlined h-6 w-auto mr-3">perm_media</span>
+        {{ __('Medios') }}
+    </x-nav-link>
     @can('user.index')
         <x-nav-link href="{{ route('user.index') }}" :active="request()->routeIs('user.index')">
             <span class="material-icons-outlined h-6 w-auto mr-3">people</span>
@@ -21,4 +25,8 @@
             {{ __('Roles') }}
         </x-nav-link>
     @endcan
+    <x-nav-link href="{{ route('message.inbox') }}" :active="request()->routeIs('message.inbox')">
+        <span class="material-icons-outlined h-6 w-auto mr-3">mail</span>
+        {{ __('Mensajes') }}
+    </x-nav-link>
 </nav>

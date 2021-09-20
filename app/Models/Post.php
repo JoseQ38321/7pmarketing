@@ -39,8 +39,13 @@ class Post extends Model
         return $this->morphToMany(Category::class, 'categorizable');
     }
 
-    public function getImageUrlAttribute()
+    public function seo()
     {
-        return Storage::url($this->image);
+        return $this->morphOne('App\Models\Seo', 'seoable');
+    }
+
+    public function getSummaryAttribute()
+    {
+        return substr($this->abstract, 0, 150).'...';
     }
 }

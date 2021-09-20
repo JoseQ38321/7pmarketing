@@ -9,10 +9,25 @@ use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
-    public function create($id)
+    public function create($id = null)
     {
-        $user = User::find($id);
-        return view('dashboard.messages.create', compact('user'));
+        if ($id) {
+            $user = User::find($id);
+            return view('dashboard.messages.create', compact('user'));
+        } else {
+            $users = User::where('id', '<>', auth()->user()->id)->get();
+            return view('dashboard.messages.create', compact('users'));
+        }
+    }
+
+    public function inbox()
+    {
+        return view('dashboard.messages.inbox');
+    }
+
+    public function outbox()
+    {
+        return view('dashboard.messages.outbox');
     }
 
     public function store(Request $request)
@@ -25,18 +40,16 @@ class MessageController extends Controller
 
         Message::create([
             'from_user_id' => auth()->user()->id,
-            'to_user_id' => $request->to_user_id,
-            'subject' => $request->subject,
-            'message' => $request->message,
-        ]);
+        ]+$request->all());
 
         $request->session()->flash('flash.banner', 'Mensaje enviado');
 
         return redirect()->back();
     }
 
-    public function show(Message $message)
+    public function show($id)
     {
+        $message = Message::find($id);
         return view('dashboard.messages.show', compact('message'));
     }
 }

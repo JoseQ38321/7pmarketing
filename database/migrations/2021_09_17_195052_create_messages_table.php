@@ -25,6 +25,9 @@ class CreateMessagesTable extends Migration
             $table->string('subject');
             $table->text('message');
 
+            $table->string('tags')->nullable();
+            $table->boolean('is_read')->default(false);
+
             $table->timestamps();
         });
     }

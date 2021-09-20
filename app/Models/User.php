@@ -70,4 +70,19 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Post::class);
     }
+
+    /**
+     * Get all of the messages for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function sendMessages()
+    {
+        return $this->hasMany(Message::class, 'from_user_id', 'id');
+    }
+
+    public function receiveMessages()
+    {
+        return $this->hasMany(Message::class, 'to_user_id', 'id');
+    }
 }

@@ -1,6 +1,6 @@
 <x-dashboard-layout>
     <x-slot name="header">
-        {{ __('Mensajes / Crear') }}
+        {{ __('Mensajes / Nuevo') }}
     </x-slot>
 
     <div class="mx-auto py-8">
@@ -11,22 +11,25 @@
         @endif
         <div class="grid grid-cols-1 md:grid-cols-6 gap-5">
             <div class="md:col-span-2 bg-white rounded-lg p-4 h-content">
-                <ul class="text-gray-700">
-                    <li>Componer</li>
-                    <li>Enviados</li>
-                    <li>Bandeja de entrada</li>
-                    <li>Sin Leer</li>
-                    <li>Leidos</li>
-                    <li>Eliminados</li>
-                </ul>
+                @include('dashboard.messages.partials.message-menu')
             </div>
             <div class="bg-white p-4 rounded-lg md:col-span-4">
                 {!! Form::open(['route' => 'message.store']) !!}
                 <div class="flex flex-col gap-3">
                     <div>
                         {!! Form::label('to_user_id', 'Para:', ['class' => 'form-label']) !!}
-                        {!! Form::hidden('to_user_id') !!}
-                        <input class="form-input" type="text" value="{{ $user->name }}" readonly>
+                        @isset ($user)
+                            {!! Form::hidden('to_user_id', $user->id) !!}
+                            <input class="form-input" type="text" value="{{ $user->name }}" readonly>
+                        @else
+                            <select class="form-input" name="to_user_id" id="to_user_id">
+                                <option {{ old('to_user_id') ? '' : 'selected'}} disabled>Selecciona un usuario</option>
+                                @foreach ($users as $user)
+                                    <option {{ old('to_user_id') == $user->id ? 'selected' : ''}} value="{{ $user->id }}">{{ $user->name }}</option>
+                                @endforeach
+                            </select>
+                            <x-jet-input-error for="to_user_id"/>
+                        @endisset
                     </div>
                     <div>
                         {!! Form::label('subject', 'Asunto:', ['class' => 'form-label']) !!}

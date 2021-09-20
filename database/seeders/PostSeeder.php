@@ -22,6 +22,7 @@ class PostSeeder extends Seeder
 
         Post::factory(100)->create()->each(function ($post) {
             $post->categories()->sync(Category::all()->random()->id);
+            $post->seo()->create();
         });
     }
 }
