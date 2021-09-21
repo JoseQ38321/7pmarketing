@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {
@@ -37,6 +36,11 @@ class Post extends Model
     public function categories()
     {
         return $this->morphToMany(Category::class, 'categorizable');
+    }
+
+    public function files()
+    {
+        return $this->morphOne(Category::class, 'fileable');
     }
 
     public function seo()

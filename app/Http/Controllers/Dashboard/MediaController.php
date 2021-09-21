@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\File;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class MediaController extends Controller
 {
@@ -16,6 +16,12 @@ class MediaController extends Controller
     public function upload(Request $request)
     {
         $file = $request->file('file');
-        $images = $file->store('media');
+
+        File::create([
+            'file_name' => $file->getClientOriginalName(),
+            'file_size' => $file->getSize(),
+            'file_type' => $file->getMimeType(),
+            'file_path' => $file->store('media'),
+        ]);
     }
 }

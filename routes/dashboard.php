@@ -22,3 +22,4 @@ Route::get('messages/{id}', [MessageController::class, 'show'])->name('message.s
 
 Route::get('media', [MediaController::class, 'index'])->name('media');
 Route::post('media/upload', [MediaController::class, 'upload'])->name('media.upload');
+
