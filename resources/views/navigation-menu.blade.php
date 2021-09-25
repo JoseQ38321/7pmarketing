@@ -1,4 +1,4 @@
-<nav x-data="{ open: false, light: false, active:false, menuShow: true }" class="bg-white absolute w-full z-50">
+<nav x-data="{ open: false, light: false, active:false, menuShow: true }" class="bg-white absolute w-full z-50 px-4 sm:px-8 xl:px-0">
     <!-- Primary Navigation Menu -->
     <div>
         <div x-show="menuShow" @scroll.window="menuShow = (window.pageYOffset > 100) ? false : true" x-transition
@@ -11,12 +11,12 @@
                         <img x-show="!light" src="{{ asset('images/identity/dark.svg') }}" class="block h-9 w-auto" />
                         <span class="text-2xl font-semibold" :class="{ 'text-white': light }">Marketing</span>
                     </a>
-                    <span class="" :class=" { 'text-white' : light }">T: +593 97 8927 327</span>
+                    <span class="hidden lg:block" :class=" { 'text-white' : light }">T: +593 97 8927 327</span>
                 </div>
 
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-6 sm:-my-px sm:flex sm:items-center" :class="{ 'text-white': light }">
+                <div class="hidden space-x-6 sm:-my-px lg:flex sm:items-center" :class="{ 'text-white': light }">
                     <x-jet-nav-link href="{{ route('welcome') }}" :active="request()->routeIs('welcome')">
                         {{ __('Inicio') }}
                     </x-jet-nav-link>
@@ -54,14 +54,12 @@
                 x-transition
                 x-transition.duration.300ms
                 class="fixed -z-1 inset-0 overflow-hidden">
-                <div class="flex h-full items-center justify-center bg-gray-800">
+                <div class="flex h-full items-center justify-center bg-ham-normal">
                     <p>menush</p>
                 </div>
             </div>
 
-
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
-
+            <div class="hidden lg:flex sm:items-center sm:ml-6">
                 @auth
                     <!-- Settings Dropdown -->
                     <div class="ml-3 relative">
@@ -102,15 +100,16 @@
             </div>
 
             <!-- Hamburger -->
-            <div class="-mr-2 flex items-center sm:hidden">
-                <button @click="open = ! open"
-                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex"
-                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden"
-                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            <div class="-mr-2 flex items-center lg:hidden">
+                <button class="" :class="{ 'bg-white': open }">
+                    <svg class="ham hamRotate ham1 w-12" viewBox="0 0 100 100"
+                        x-on:click="open = !open; light = !light; document.body.classList.toggle('overflow-hidden');"
+                        :class="{ 'active': open }">
+                        <path class="line top"
+                            d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
+                        <path class="line middle" d="m 30,50 h 40" />
+                        <path class="line bottom"
+                            d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
                     </svg>
                 </button>
             </div>
@@ -118,46 +117,18 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-jet-responsive-nav-link>
-        </div>
-
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
-            @auth
-                <div class="flex items-center px-4">
-                    <div class="flex-shrink-0 mr-3">
-                        <img class="h-10 w-10 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
-                            alt="{{ Auth::user()->name }}" />
-                    </div>
-
-                    <div>
-                        <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                        <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-                    </div>
-                </div>
-            @endauth
-
-            <div class="mt-3 space-y-1">
-                <!-- Account Management -->
-                <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
-                    :active="request()->routeIs('profile.show')">
-                    {{ __('Profile') }}
-                </x-jet-responsive-nav-link>
-
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                    this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-jet-responsive-nav-link>
-                </form>
-            </div>
-        </div>
+    <div x-show="open"
+         x-transition
+         x-transition.duration.300ms
+         class="fixed -z-1 inset-0 overflow-hidden">
+         <div class="flex h-full items-center justify-end bg-ham-normal px-8 sm:px-12 md:px-20">
+             <nav class="flex flex-col gap-6 text-white">
+                 <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="">Inicio</a>
+                 <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="">Recursos</a>
+                 <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="">Blog</a>
+                 <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="">Agencia</a>
+                 <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="">Academia</a>
+             </nav>
+         </div>
     </div>
 </nav>

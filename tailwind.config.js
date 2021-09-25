@@ -22,13 +22,17 @@ module.exports = {
                 },
                 blue: {
                     normal: '#030317',
-                }
+                },
+                ham: {
+                    normal: '#282828',
+                },
             },
             borderWidth: {
                 3: '3px',
             },
             height: {
                 content: 'fit-content',
+                750: '750px',
             },
             width: {
                 content: 'fit-content',

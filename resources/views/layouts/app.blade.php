@@ -16,7 +16,7 @@
         @livewireStyles
 
     </head>
-    <body class="font-sans antialiased pr-14 pl-36" id="top">
+    <body class="font-sans antialiased lg:pr-14 lg:pl-36" id="top">
 
         @include('layouts.partials.aside')
 

@@ -1,6 +1,6 @@
 <div x-data="{ logoScrol: false }"
      @scroll.window="logoScrol = (window.pageYOffset > 100) ? true : false"
-     class="left-0 h-screen w-36 bg-white fixed">
+     class="left-0 h-screen w-36 bg-white fixed hidden lg:block">
     <div class="relative h-full flex flex-col items-center justify-center gap-4">
 
         <a x-show="logoScrol"
