@@ -15,32 +15,32 @@
 
         @livewireStyles
 
-        <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
-        <x-jet-banner />
+    <body class="font-sans antialiased pr-14 pl-36" id="top">
 
-        <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
+        @include('layouts.partials.aside')
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+        <div class="min-h-screen">
+
+            <div class="relative w-full">
+                @livewire('navigation-menu')
+            </div>
 
             <!-- Page Content -->
-            <main>
+            <main class="pt-24">
                 {{ $slot }}
             </main>
+
         </div>
 
         @stack('modals')
 
         @livewireScripts
+
+        <!-- Scripts -->
+        <script src="{{ mix('js/app.js') }}"></script>
+
+        @stack('scripts')
+
     </body>
 </html>

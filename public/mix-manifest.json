@@ -1,7 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/dropzone.js": "/js/dropzone.js",
+    "/css/dropzone.css": "/css/dropzone.css",
     "/css/app.css": "/css/app.css",
-    "/css/material-icons.min.css": "/css/material-icons.min.css",
-    "/css/dropzone.css": "/css/dropzone.css"
+    "/css/material-icons.min.css": "/css/material-icons.min.css"
 }

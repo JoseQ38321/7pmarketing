@@ -1,9 +1,9 @@
 <div>
-    <div class="my-8 mansory">
+    <div class="my-8 grid grid-cols-6 gap-4">
         @foreach ($files as $file)
             <div class="relative hover:scale-110 transition-all ease-in-out cursor-pointer">
                 <input class="absolute top-1.5 left-1.5 rounded border-gray-600" value="{{ $file->id }}" type="checkbox">
-                <img class="w-full h-auto rounded object-cover object-center" src="{{ Storage::url($file->file_path) }}" alt="{{ $file->file_name }}" wire:click="showFileModal({{ $file->id }})">
+                <img class="w-full h-24 rounded object-cover object-center" src="{{ Storage::url($file->file_path) }}" alt="{{ $file->file_name }}" wire:click="showFileModal({{ $file->id }})">
             </div>
         @endforeach
     </div>
