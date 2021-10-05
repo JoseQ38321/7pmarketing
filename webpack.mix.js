@@ -20,7 +20,8 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/dropzone.js', 'public/js')
     .postCss('resources/css/dropzone.css', 'public/css', [
         require('postcss-import')
-    ]);
+    ])
+    .copy('node_modules/animate.css/animate.min.css', 'public/css');
 
 if (mix.inProduction()) {
     mix.version();

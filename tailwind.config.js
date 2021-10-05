@@ -31,14 +31,16 @@ module.exports = {
                 3: '3px',
             },
             height: {
-                content: 'fit-content',
-                750: '750px',
+                content: 'fit-content'
             },
             width: {
                 content: 'fit-content',
             },
-            height: {
-                content: 'fit-content',
+            fill: {
+                white: '#ffffff',
+            },
+            lineHeight: {
+                150: '150px!important',
             },
         },
     },

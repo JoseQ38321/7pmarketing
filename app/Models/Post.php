@@ -38,9 +38,9 @@ class Post extends Model
         return $this->morphToMany(Category::class, 'categorizable');
     }
 
-    public function files()
+    public function image()
     {
-        return $this->morphOne(Category::class, 'fileable');
+        return $this->morphToMany(File::class, 'fileable');
     }
 
     public function seo()

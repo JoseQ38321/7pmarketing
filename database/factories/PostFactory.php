@@ -27,7 +27,6 @@ class PostFactory extends Factory
             'title' => $this->faker->sentence(),
             'abstract' => $this->faker->text(100),
             'content' => $this->faker->text(1200),
-            'image' => 'posts/'.$this->faker->image('public/storage/posts', 640, 400, null, false),
             'views' => $this->faker->numberBetween(500, 1000),
             'status' => $this->faker->boolean()
         ];

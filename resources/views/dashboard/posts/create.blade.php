@@ -9,7 +9,7 @@
                 <x-jet-banner />
             </div>
         @endif
-        <div x-data="{ open: false }">
+        <div x-data="{ open: false, active: 1, path: '' }">
             {!! Form::open(['route' => 'post.store', 'files' => true]) !!}
             <div class="md:grid md:grid-cols-8 md:gap-6">
                 <div class="md:col-span-6 bg-white py-5 px-4 rounded-md">
@@ -53,29 +53,20 @@
                     <div class="mb-3 bg-white py-5 px-4 rounded-md">
                         <div x-data="{photoName: null, photoPreview: null}">
                             {!! Form::label('image', __('Imagen'), ['class' => 'form-label']) !!}
-                            <input type="file" class="hidden" name="image" x-ref="photo" x-on:change="
-                                                photoName = $refs.photo.files[0].name;
-                                                const reader = new FileReader();
-                                                reader.onload = (e) => {
-                                                    photoPreview = e.target.result;
-                                                };
-                                                reader.readAsDataURL($refs.photo.files[0]);
-                                        " />
 
-                            <div class="mt-2 w-full border border-gray-400 rounded-md border-dashed flex items-center text-center h-28 hover:border-blue-60 cursor-pointer"
+                            <div x-show="!path" class="mt-2 w-full border border-gray-400 rounded-md border-dashed flex items-center text-center h-28 hover:border-blue-60 cursor-pointer"
                                 @click="open = true">
                                 <p class="text-gray-600 w-full">{{ __('Cargar una nueva imagen') }}</p>
                             </div>
 
-                            <div class="mt-2" x-show="photoPreview">
-                                <span class="block rounded w-full h-28"
-                                    x-bind:style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'">
-                                </span>
-                            </div>
+                            <img x-show="path" class="w-full object-cover object-center rounded-md h-28" x-bind:src="'{{ config('app.url') }}'+'/storage/'+path">
 
                             <x-jet-secondary-button class="mt-2 text-sm" type="button" @click="open = true">
                                 {{ __('Selecionar Imagen') }}
                             </x-jet-secondary-button>
+
+
+                            <input x-show="path" class="w-full" type="hidden" name="image" x-bind:value="path">
 
                         </div>
                         <x-jet-input-error for="image" />
@@ -109,10 +100,12 @@
                     </div>
                 </div>
             </div>
+
             {!! Form::close() !!}
 
             <!-- Select Image Modal -->
-            <div class="fixed inset-0 w-full h-full z-20 bg-black bg-opacity-60 duration-300 flex items-center justify-center"
+            <div class="fixed inset-0 w-full h-full z-50 bg-black bg-opacity-60 duration-300 flex items-center justify-center"
+                x-cloak
                 x-show="open"
                 x-transition:enter="transition duration-300"
                 x-transition:enter-start="opacity-0"
@@ -121,7 +114,7 @@
                 x-transition:leave-start="opacity-100"
                 x-transition:leave-end="opacity-0">
 
-                <div class="relative w-4/5 h-4/5 mx-2 sm:mx-auto opacity-100">
+                <div class="relative w-4/5 mx-2 sm:mx-auto opacity-100">
                     <div class="relative bg-white h-full shadow-lg rounded-lg text-gray-700 z-20 overflow-y-auto"
                         x-show="open"
                         @click.away="open = false"
@@ -131,41 +124,19 @@
                         x-transition:leave="transition transform duration-300"
                         x-transition:leave-start="scale-100"
                         x-transition:leave-end="scale-0">
-
-                        <div x-data="{active: 1}">
-                            <div class="flex">
-                                <button class="px-4 py-2 w-full" x-on:click.prevent="active = 0" x-bind:class="{'bg-gray-200 text-gray-700': active === 0}">Añadir nuevo</button>
-                                <button class="px-4 py-2 w-full" x-on:click.prevent="active = 1" x-bind:class="{'bg-gray-200 text-gray-700': active === 1}">Seleccionar Imágen</button>
-                            </div>
-                            <div>
-                                <div class="m-4 p-2" x-show="active === 0">
-                                    <form action="{{ route('media.upload') }}" method="POST" class="dropzone" id="my-awesome-dropzone"></form>
-                                </div>
-                                <div class="m-4 p-2 overflow-y-auto" x-show.transition.in="active === 1">
-                                    @livewire('dashboard.media-upload')
-                                </div>
-                            </div>
+                        <div>
+                            @livewire('dashboard.select-image')
                         </div>
-
                     </div>
                 </div>
-
             </div>
             <!-- Select Image Modal -->
 
         </div>
     </div>
 
-    @push('css')
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.css"
-            integrity="sha512-jU/7UFiaW5UBGODEopEqnbIAHOI8fO6T99m7Tsmqs2gkdujByJfkCbbfPSN4Wlqlb9TGnsuC0YgUgWkRBK7B9A=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-    @endpush
     @push('scripts')
         <script src="https://cdn.tiny.cloud/1/n10qavr3k068jfmf4nlufnifrpct4w17tg2ch2e53ghffjrm/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.js" integrity="sha512-VQQXLthlZQO00P+uEu4mJ4G4OAgqTtKG1hri56kQY1DtdLeIqhKUp9W/lllDDu3uN3SnUNawpW7lBda8+dSi7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
         <script>
             tinymce.init({
                 selector: '#content',
@@ -174,18 +145,6 @@
                 min_height: 600,
                 toolbar_mode: 'floating',
             });
-
-            Dropzone.options.myAwesomeDropzone = {
-                headers: {
-                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                },
-                init: function () {
-                    this.on("complete", function (file) {
-                        Livewire.emit('mediaUploaded');
-                        
-                    });
-                }
-            };
         </script>
     @endpush
 

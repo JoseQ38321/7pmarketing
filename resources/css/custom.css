@@ -65,3 +65,25 @@
 .-z-1 {
     z-index: -1!important;
 }
+
+.h-650 {
+    height: 650px!important;
+}
+
+.white-image {
+    filter: saturate(0) brightness(3) contrast(3);
+}
+
+.blog-mansory {
+    @apply space-y-6;
+    columns: 2;
+    column-gap: 3rem;
+}
+
+.blog-mansory div {
+    -webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
+    page-break-inside: avoid; /* Firefox */
+    break-inside: avoid; /* IE 10+ */
+}
+
+[x-cloak] { display: none !important; }

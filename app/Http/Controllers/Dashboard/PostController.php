@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\File;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -43,15 +44,21 @@ class PostController extends Controller
             'abstract' => 'required',
             'content' => 'required',
             'categories' => 'required|array',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+            'image' => 'required',
         ]);
 
-        $post = Post::create($request->all());
-        $post->categories()->attach($request->categories);
+        $post = Post::create([
+            'title' => $request->title,
+            'abstract' => $request->abstract,
+            'content' => $request->content,
+            'status' => $request->status,
+            'user_id' => auth()->user()->id,
+        ]);
+        $post->categories()->sync($request->categories);
 
-        if ($request->hasFile('image')) {
-            $post->addMedia()->toMediaCollection();
-        }
+        $path = $request->image;
+        $image = File::where('file_path', $path)->first();
+        $post->image()->sync($image->id);
     }
 
     /**

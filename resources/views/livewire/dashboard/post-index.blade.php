@@ -36,7 +36,7 @@
                     <tr class="border-b border-gray-100 hover:bg-gray-50">
                         <td class="py-3 px-6 text-left">
                             <div class="flex items-center gap-4">
-                                <img class="h-14 w-16 rounded-sm object-cover" src="{{ Storage::url($post->image) }}" alt="{{ $post->title }}">
+                                <img class="h-14 w-16 rounded-sm object-cover" src="{{ Storage::url($post->image()->first()->file_path) }}" alt="{{ $post->title }}">
                                 <div>
                                     <div>
                                         <a href="#" class="font-bold text-gray-800">{{ $post->title }}</a>

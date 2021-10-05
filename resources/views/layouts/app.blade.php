@@ -12,11 +12,14 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+        @stack('css')
 
         @livewireStyles
 
     </head>
-    <body class="font-sans antialiased lg:pr-14 lg:pl-36" id="top">
+    <body x-data="{ open: false, light: false, active:false, menuShow: true, logoScrol: false, services: false, video: false, contact: false }" class="font-sans antialiased lg:pr-14 lg:pl-36 bg-white" id="top">
 
         @include('layouts.partials.aside')
 
@@ -33,12 +36,21 @@
 
         </div>
 
+        <div>
+            @include('layouts.partials.footer')
+        </div>
+
         @stack('modals')
 
         @livewireScripts
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+        <script>
+            AOS.init();
+        </script>
 
         @stack('scripts')
 

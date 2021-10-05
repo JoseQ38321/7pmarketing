@@ -13,7 +13,7 @@ class CreateFileableTable extends Migration
      */
     public function up()
     {
-        Schema::create('fileable', function (Blueprint $table) {
+        Schema::create('fileables', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('fileable_id');
@@ -32,6 +32,6 @@ class CreateFileableTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fileable');
+        Schema::dropIfExists('fileables');
     }
 }

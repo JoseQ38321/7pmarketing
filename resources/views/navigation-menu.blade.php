@@ -1,4 +1,4 @@
-<nav x-data="{ open: false, light: false, active:false, menuShow: true }" class="bg-white absolute w-full z-50 px-4 sm:px-8 xl:px-0">
+<nav class="bg-white absolute w-full z-50 px-4 sm:px-8 xl:px-0">
     <!-- Primary Navigation Menu -->
     <div>
         <div x-show="menuShow" @scroll.window="menuShow = (window.pageYOffset > 100) ? false : true" x-transition
@@ -23,7 +23,7 @@
                     <x-jet-nav-link href="#">
                         {{ __('Recursos') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="#">
+                    <x-jet-nav-link href="https://academia.7p-marketing.com/" target="_blank">
                         {{ __('Academia') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="#">
@@ -51,23 +51,31 @@
 
             <!-- Menu desplegable derecho -->
             <div x-show="active"
+                x-cloak
                 x-transition
                 x-transition.duration.300ms
                 class="fixed -z-1 inset-0 overflow-hidden">
                 <div class="flex h-full items-center justify-center bg-ham-normal">
-                    <p>menush</p>
+                    <div class="max-w-7xl grid grid-cols-2 gap-6">
+                            <iframe src="https://open.spotify.com/embed/episode/7he1cBcdqd1q0EC2jxT1Zk" width="100%" height="232" frameBorder="4" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                        <div class="flex flex-col gap-5 text-white">
+                            <span class="uppercase text-sm">pódcast</span>
+                            <h4 class="font-semibold text-5xl">Un Mundo de Posibilidades con Rashel López</h4>
+                            <span class="text-lg">Rashel Lopez</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="hidden lg:flex sm:items-center sm:ml-6">
+            <div class="hidden lg:flex sm:items-center">
                 @auth
                     <!-- Settings Dropdown -->
                     <div class="ml-3 relative">
                         <x-jet-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 <button
-                                    class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                    <img class="h-8 w-8 rounded-full object-cover"
+                                    class="flex focus:outline-none">
+                                    <img class="h-8 w-8 object-cover object-center"
                                         src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                                 </button>
                             </x-slot>
@@ -118,6 +126,7 @@
 
     <!-- Responsive Navigation Menu -->
     <div x-show="open"
+         x-cloak
          x-transition
          x-transition.duration.300ms
          class="fixed -z-1 inset-0 overflow-hidden">
@@ -127,7 +136,7 @@
                  <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="">Recursos</a>
                  <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="">Blog</a>
                  <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="">Agencia</a>
-                 <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="">Academia</a>
+                 <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="https://academia.7p-marketing.com/" target="_blank">Academia</a>
              </nav>
          </div>
     </div>

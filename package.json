@@ -24,6 +24,8 @@
         "tailwindcss": "^2.2.2"
     },
     "dependencies": {
+        "animate.css": "^4.1.1",
+        "aos": "^2.3.4",
         "dropzone": "^5.9.2"
     }
 }

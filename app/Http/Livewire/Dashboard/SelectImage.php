@@ -6,7 +6,7 @@ use App\Models\File;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
-class MediaUpload extends Component
+class SelectImage extends Component
 {
     protected $listeners = ['mediaUploaded' => '$refresh'];
 
@@ -20,7 +20,7 @@ class MediaUpload extends Component
     public function render()
     {
         $files = File::paginate($this->perPage);
-        return view('livewire.dashboard.media-upload', compact('files'));
+        return view('livewire.dashboard.select-image', compact('files'));
     }
 
     public function showFileModal($id)
