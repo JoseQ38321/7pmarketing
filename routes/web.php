@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Frontend\AgencyController;
+use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +18,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'home'])->name('welcome');
+
+Route::get('contacto', [ContactController::class, 'index'])->name('contact');
+
+Route::get('quienes-somos', [AgencyController::class, 'index'])->name('about-us');
+
+Route::get('Blog', [BlogController::class, 'index'])->name('blog');
+
+Route::get('Blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+

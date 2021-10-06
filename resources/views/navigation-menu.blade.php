@@ -26,13 +26,13 @@
                     <x-jet-nav-link href="https://academia.7p-marketing.com/" target="_blank">
                         {{ __('Academia') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="#">
+                    <x-jet-nav-link href="{{ route('blog') }}" :active="request()->routeIs('blog')">
                         {{ __('Blog') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="#">
+                    <x-jet-nav-link href="{{ route('about-us') }}" :active="request()->routeIs('about-us')">
                         {{ __('Quienes Somos') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="#">
+                    <x-jet-nav-link href="{{ route('contact') }}" :active="request()->routeIs('contact')">
                         {{ __('Contacto') }}
                     </x-jet-nav-link>
                     <span class="" :class="{ 'bg-white': light }">
@@ -136,6 +136,7 @@
                  <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="">Recursos</a>
                  <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="">Blog</a>
                  <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="">Agencia</a>
+                 <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="{{ route('contact') }}">Contacto</a>
                  <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="https://academia.7p-marketing.com/" target="_blank">Academia</a>
              </nav>
          </div>

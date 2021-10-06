@@ -26,12 +26,17 @@ module.exports = {
                 ham: {
                     normal: '#282828',
                 },
+                gray: {
+                    light: "#393939",
+                }
             },
             borderWidth: {
                 3: '3px',
             },
             height: {
-                content: 'fit-content'
+                content: 'fit-content',
+                650: '650px',
+                480: '480px',
             },
             width: {
                 content: 'fit-content',
