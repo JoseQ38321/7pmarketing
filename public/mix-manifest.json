@@ -1,8 +1,8 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/js/dropzone.js": "/js/dropzone.js",
-    "/css/dropzone.css": "/css/dropzone.css",
-    "/css/app.css": "/css/app.css",
-    "/css/material-icons.min.css": "/css/material-icons.min.css",
-    "/css/animate.min.css": "/css/animate.min.css"
+    "/js/app.js": "/js/app.js?id=acce84c73ee41cb6cee6",
+    "/js/dropzone.js": "/js/dropzone.js?id=75df65a394ea45282965",
+    "/css/dropzone.css": "/css/dropzone.css?id=be182ad4151cfaaffe6a",
+    "/css/app.css": "/css/app.css?id=7e9e133b7304f0318480",
+    "/css/material-icons.min.css": "/css/material-icons.min.css?id=acc2d4384ca4b31236f3",
+    "/css/animate.min.css": "/css/animate.min.css?id=c0be8e53226ac34833fd"
 }
