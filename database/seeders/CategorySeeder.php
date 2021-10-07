@@ -17,7 +17,7 @@ class CategorySeeder extends Seeder
     {
         Storage::deleteDirectory('categories');
 
-        Storage::makeDirectory('categories');
+        Storage::makeDirectory('categories', 0755, true);
 
         Category::factory(10)->create();
     }
