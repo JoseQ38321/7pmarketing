@@ -4,6 +4,7 @@ use App\Http\Controllers\Frontend\AgencyController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\ResourceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,4 +27,8 @@ Route::get('quienes-somos', [AgencyController::class, 'index'])->name('about-us'
 Route::get('Blog', [BlogController::class, 'index'])->name('blog');
 
 Route::get('Blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+
+Route::get('Recursos', [ResourceController::class, 'index'])->name('resource');
+
+Route::get('Recursos/{slug}', [ResourceController::class, 'show'])->name('resource.show');
 

@@ -19,8 +19,8 @@
             </svg>
         </a>
 
-        <a class="transform rotate-180 text-vertical font-bold text-sm uppercase" href="#">Facebook</a>
-        <a class="transform rotate-180 text-vertical font-bold text-sm uppercase" href="#">Instagram</a>
-        <a class="transform rotate-180 text-vertical font-bold text-sm uppercase" href="#">Spotify</a>
+        <a class="transform rotate-180 text-vertical font-bold text-sm uppercase" href="https://www.facebook.com/7PMarketingInternacional" target="_blank">Facebook</a>
+        <a class="transform rotate-180 text-vertical font-bold text-sm uppercase" href="https://www.instagram.com/7p_marketing/" target="_blank">Instagram</a>
+        <a class="transform rotate-180 text-vertical font-bold text-sm uppercase" href="https://open.spotify.com/show/3MH73d3OIf4a0LQLPo36H4" target="_blank">Spotify</a>
     </div>
 </div>

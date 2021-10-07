@@ -1,6 +1,6 @@
 <x-dashboard-layout>
     <x-slot name="header">
-        {{ __('Blog / Crear') }}
+        {{ __('Recursos / Crear') }}
     </x-slot>
 
     <div class="mx-auto py-8">
@@ -10,21 +10,21 @@
             </div>
         @endif
         <div x-data="{ open: false, active: 1, path: '' }">
-            {!! Form::open(['route' => 'post.store', 'files' => true]) !!}
+            {!! Form::open(['route' => 'resource.store', 'files' => true]) !!}
             <div class="md:grid md:grid-cols-8 md:gap-6">
                 <div class="md:col-span-6 bg-white py-5 px-4 rounded-md">
                     <div class="mb-3">
-                        {!! Form::label('title', __('Title'), ['class' => 'form-label']) !!}
-                        {!! Form::text('title', null, ['class' => 'form-input', 'placeholder' => __('Title of post')]) !!}
+                        {!! Form::label('title', __('Título'), ['class' => 'form-label']) !!}
+                        {!! Form::text('title', null, ['class' => 'form-input', 'placeholder' => __('Título del recurso')]) !!}
                         <x-jet-input-error for="title" />
                     </div>
                     <div class="mb-3">
-                        {!! Form::label('abstract', __('Abstract'), ['class' => 'form-label']) !!}
-                        {!! Form::textarea('abstract', null, ['class' => 'form-input', 'placeholder' => __('Abstract of post'), 'rows' => 4, 'maxlength ' => 250]) !!}
+                        {!! Form::label('abstract', __('Resumen'), ['class' => 'form-label']) !!}
+                        {!! Form::textarea('abstract', null, ['class' => 'form-input', 'placeholder' => __('Resumen del recurso'), 'rows' => 4, 'maxlength ' => 250]) !!}
                         <x-jet-input-error for="abstract" />
                     </div>
                     <div class="mb-3">
-                        {!! Form::label('content', null, ['class' => 'form-label']) !!}
+                        {!! Form::label('content', 'Contenido', ['class' => 'form-label']) !!}
                         <textarea class="form-input" name="content" id="content"></textarea>
                         <x-jet-input-error for="content" />
                     </div>
@@ -35,7 +35,7 @@
                         {!! Form::select('status', [0 => __('Borrador'), 1 => __('Publicado')], null, ['class' => 'form-input']) !!}
                         <x-jet-input-error for="status" />
                         <div class="mt-3">
-                            {!! Form::submit(__('Crear Post'), ['class' => 'btn-primary w-full']) !!}
+                            {!! Form::submit(__('Crear Recurso'), ['class' => 'btn-primary w-full']) !!}
                         </div>
                     </div>
                     <div class="mb-3 bg-white py-5 px-4 rounded-md">
@@ -51,7 +51,7 @@
                         <x-jet-input-error for="categories" />
                     </div>
                     <div class="mb-3 bg-white py-5 px-4 rounded-md">
-                        <div>
+                        <div x-data="{photoName: null, photoPreview: null}">
                             {!! Form::label('image', __('Imagen'), ['class' => 'form-label']) !!}
 
                             <div x-show="!path" class="mt-2 w-full border border-gray-400 rounded-md border-dashed flex items-center text-center h-28 hover:border-blue-60 cursor-pointer"

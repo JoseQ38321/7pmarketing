@@ -16,6 +16,11 @@ class File extends Model
     {
         return $this->morphedByMany(Post::class, 'fileable');
     }
+
+    public function resources()
+    {
+        return $this->morphedByMany(Resource::class, 'fileable');
+    }
 }
 
 

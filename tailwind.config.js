@@ -34,9 +34,10 @@ module.exports = {
                 3: '3px',
             },
             height: {
-                content: 'fit-content',
-                650: '650px',
-                480: '480px',
+                content: 'fit-content!important',
+                650: '650px!important',
+                480: '480px!important',
+                400: '400px!important',
             },
             width: {
                 content: 'fit-content',

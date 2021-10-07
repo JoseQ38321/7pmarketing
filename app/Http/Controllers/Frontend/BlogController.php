@@ -3,20 +3,21 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
-        return view('frontend.blog', compact('posts'));
+        return view('frontend.blog');
     }
 
     public function show($slug)
     {
         $post = Post::where('slug', $slug)->first();
-        return view('frontend.single-blog', compact('post'));
+        $recentPosts = Post::latest()->take(5)->get();
+        $categories = Category::all();
+        return view('frontend.single-blog', compact('post', 'recentPosts', 'categories'));
     }
 }

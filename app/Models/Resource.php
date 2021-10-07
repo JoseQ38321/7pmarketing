@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Support\Facades\Storage;
 
-class Post extends Model
+class Resource extends Model
 {
     use HasFactory;
     use Sluggable;

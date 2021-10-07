@@ -6,12 +6,12 @@
             <div class="flex justify-between w-full">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center gap-10" x-on:light.window="light = true">
-                    <a class="flex items-center gap-2" href="{{ route('dashboard') }}">
-                        <img x-show="light" src="{{ asset('images/identity/light.svg') }}" class="block h-9 w-auto" />
+                    <a class="flex items-center gap-2" href="{{ route('welcome') }}">
+                        <img x-show="light" x-cloak src="{{ asset('images/identity/light.svg') }}" class="block h-9 w-auto" />
                         <img x-show="!light" src="{{ asset('images/identity/dark.svg') }}" class="block h-9 w-auto" />
                         <span class="text-2xl font-semibold" :class="{ 'text-white': light }">Marketing</span>
                     </a>
-                    <span class="hidden lg:block" :class=" { 'text-white' : light }">T: +593 97 8927 327</span>
+                    <a href="https://api.whatsapp.com/send?phone=593983151780&text=Hola," target="_blank" class="hidden lg:block" :class=" { 'text-white' : light }">T: +593 98 315 1780</a>
                 </div>
 
 
@@ -20,7 +20,7 @@
                     <x-jet-nav-link href="{{ route('welcome') }}" :active="request()->routeIs('welcome')">
                         {{ __('Inicio') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="#">
+                    <x-jet-nav-link href="{{ route('resource') }}" :active="request()->routeIs('resource')">
                         {{ __('Recursos') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="https://academia.7p-marketing.com/" target="_blank">
@@ -85,7 +85,11 @@
                                 <div class="block px-4 py-2 text-xs text-gray-400">
                                     {{ __('Manage Account') }}
                                 </div>
-
+                                @can('dashboard')
+                                    <x-jet-dropdown-link href="{{ route('dashboard') }}">
+                                        {{ __('Dashboard') }}
+                                    </x-jet-dropdown-link>
+                                @endcan
                                 <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                     {{ __('Profile') }}
                                 </x-jet-dropdown-link>
@@ -130,14 +134,15 @@
          x-transition
          x-transition.duration.300ms
          class="fixed -z-1 inset-0 overflow-hidden">
-         <div class="flex h-full items-center justify-end bg-ham-normal px-8 sm:px-12 md:px-20">
-             <nav class="flex flex-col gap-6 text-white">
-                 <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="">Inicio</a>
-                 <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="">Recursos</a>
-                 <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="">Blog</a>
-                 <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="">Agencia</a>
-                 <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="{{ route('contact') }}">Contacto</a>
-                 <a class="font-bold text-4xl sm:text-5xl text-right transform transition-all ease-in-out hover:scale-110" href="https://academia.7p-marketing.com/" target="_blank">Academia</a>
+         <div class="flex h-screen w-screen items-center bg-ham-normal px-8 sm:px-12 md:px-20">
+             <nav class="flex flex-col gap-6 text-white w-full">
+                 <a class="font-semibold text-2xl sm:text-3xl md:text-4xl text-center transform transition-all ease-in-out hover:scale-110" href="{{ route('welcome') }}">Inicio</a>
+                 <a class="font-semibold text-2xl sm:text-3xl md:text-4xl text-center transform transition-all ease-in-out hover:scale-110" href="{{ route('resource') }}">Recursos</a>
+                 <a class="font-semibold text-2xl sm:text-3xl md:text-4xl text-center transform transition-all ease-in-out hover:scale-110" href="https://academia.7p-marketing.com/" target="_blank">Academia</a>
+                 <a class="font-semibold text-2xl sm:text-3xl md:text-4xl text-center transform transition-all ease-in-out hover:scale-110" href="{{ route('blog') }}">Blog</a>
+                 <a class="font-semibold text-2xl sm:text-3xl md:text-4xl text-center transform transition-all ease-in-out hover:scale-110" href="{{ route('about-us') }}">Quienes Somos</a>
+                 <a class="font-semibold text-2xl sm:text-3xl md:text-4xl text-center transform transition-all ease-in-out hover:scale-110" href="{{ route('contact') }}">Contacto</a>
+                 <a class="font-semibold text-2xl sm:text-3xl md:text-4xl text-center transform transition-all ease-in-out hover:scale-110" href="https://open.spotify.com/show/3MH73d3OIf4a0LQLPo36H4" target="_blank">Podcast</a>
              </nav>
          </div>
     </div>

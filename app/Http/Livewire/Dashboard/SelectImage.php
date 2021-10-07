@@ -19,7 +19,8 @@ class SelectImage extends Component
 
     public function render()
     {
-        $files = File::paginate($this->perPage);
+        $files = File::orderBy('created_at', 'desc')
+                        ->paginate($this->perPage);
         return view('livewire.dashboard.select-image', compact('files'));
     }
 

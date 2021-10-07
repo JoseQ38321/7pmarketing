@@ -5,17 +5,17 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\File;
-use App\Models\Post;
+use App\Models\Resource;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class ResourceController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:post.index')->only('index');
-        $this->middleware('can:post.store')->only('store');
-        $this->middleware('can:post.edit')->only('edit');
-        $this->middleware('can:post.update')->only('update');
+        $this->middleware('can:resource.index')->only('index');
+        $this->middleware('can:resource.store')->only('store');
+        $this->middleware('can:resource.edit')->only('edit');
+        $this->middleware('can:resource.update')->only('update');
     }
 
     /**
@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('dashboard.posts.index');
+        return view('dashboard.resources.index');
     }
 
     /**
@@ -36,7 +36,7 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('dashboard.posts.create', compact('categories'));
+        return view('dashboard.resources.create', compact('categories'));
     }
 
     /**
@@ -55,44 +55,31 @@ class PostController extends Controller
             'image' => 'required',
         ]);
 
-        $post = Post::create([
+        $resource = Resource::create([
             'title' => $request->title,
             'abstract' => $request->abstract,
             'content' => $request->content,
             'status' => $request->status,
             'user_id' => auth()->user()->id,
         ]);
-        $post->categories()->sync($request->categories);
+        $resource->categories()->sync($request->categories);
 
         $path = $request->image;
         $image = File::where('file_path', $path)->first();
-        $post->image()->sync($image->id);
+        $resource->image()->sync($image->id);
 
-        $request->session()->flash('flash.banner', 'Post creado exitosamente');
+        $request->session()->flash('flash.banner', 'Recurso creado exitosamente');
 
-        return redirect()->route('post.edit', $post);
+        return redirect()->route('resource.edit', $resource);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Post $post)
+    public function edit(Resource $resource)
     {
         $categories = Category::all();
-        return view('dashboard.posts.edit', compact('post', 'categories'));
+        return view('dashboard.resources.edit', compact('resource', 'categories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Resource $resource)
     {
         /* return $request->all(); */
         $this->validate($request, [
@@ -102,23 +89,23 @@ class PostController extends Controller
             'categories' => 'required|array'
         ]);
 
-        $post->update([
+        $resource->update([
             'title' => $request->title,
             'abstract' => $request->abstract,
             'content' => $request->content,
             'status' => $request->status
         ]);
 
-        $post->categories()->sync($request->categories);
+        $resource->categories()->sync($request->categories);
 
         if ($request->image) {
             $path = $request->image;
             $image = File::where('file_path', $path)->first();
-            $post->image()->sync($image->id);
+            $resource->image()->sync($image->id);
         }
 
-        $request->session()->flash('flash.banner', 'Post actualizado exitosamente');
+        $request->session()->flash('flash.banner', 'Recurso actualizado exitosamente');
 
-        return redirect()->route('post.edit', $post);
+        return redirect()->route('resource.edit', $resource);
     }
 }

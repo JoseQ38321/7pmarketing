@@ -41,5 +41,12 @@ class RoleSeeder extends Seeder
         $permission = Permission::create(['name' => 'post.edit', 'description' => 'Editar Posts'])->syncRoles([$admin, $author, $editor]);
         $permission = Permission::create(['name' => 'post.update', 'description' => 'Actualizar Posts'])->syncRoles([$admin, $author, $editor]);
         $permission = Permission::create(['name' => 'post.destroy', 'description' => 'Eliminar Posts'])->syncRoles([$admin, $author]);
+
+        $permission = Permission::create(['name' => 'resource.index', 'description' => 'Listar Recursos'])->syncRoles([$admin, $author, $editor]);
+        $permission = Permission::create(['name' => 'resource.store', 'description' => 'Crear Recursos'])->syncRoles([$admin, $author]);
+        $permission = Permission::create(['name' => 'resource.show', 'description' => 'Ver Recursos'])->syncRoles([$admin, $author, $editor]);
+        $permission = Permission::create(['name' => 'resource.edit', 'description' => 'Editar Recursos'])->syncRoles([$admin, $author, $editor]);
+        $permission = Permission::create(['name' => 'resource.update', 'description' => 'Actualizar Recursos'])->syncRoles([$admin, $author, $editor]);
+        $permission = Permission::create(['name' => 'resource.destroy', 'description' => 'Eliminar Recursos'])->syncRoles([$admin, $author]);
     }
 }

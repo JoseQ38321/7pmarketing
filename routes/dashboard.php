@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\MediaController;
 use App\Http\Controllers\Dashboard\MessageController;
 use App\Http\Controllers\Dashboard\PostController;
+use App\Http\Controllers\Dashboard\ResourceController;
 use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
@@ -11,7 +12,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::resource('user', UserController::class)->names('user');
-Route::resource('post', PostController::class)->names('post');
+Route::resource('post', PostController::class)->names('post')->except('show');
+Route::resource('resource', ResourceController::class)->names('resource')->except('show');
 Route::resource('role', RoleController::class)->names('role');
 
 Route::get('message/create/{id?}', [MessageController::class, 'create'])->name('message.create');

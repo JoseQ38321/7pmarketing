@@ -27,4 +27,9 @@ class Category extends Model
     {
         return $this->morphedByMany(Post::class, 'categorizable');
     }
+
+    public function resources()
+    {
+        return $this->morphedByMany(Resource::class, 'categorizable');
+    }
 }

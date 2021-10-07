@@ -1,15 +1,15 @@
 <x-app-layout>
-    <section class="md:max-w-3xl lg:max-w-7xl mx-auto mt-12 mb-24" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
-        <h1 class="text-gray-800 font-bold text-5xl sm:text-6xl md:text-8xl lg:text-9xl mx-4 leading-150">
+    <section class="md:max-w-3xl lg:max-w-7xl mx-auto mt-0 md:mt-12 mb-6 md:mb-24 px-4 md:px-0" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+        <h1 class="w-full text-gray-800 font-bold text-5xl sm:text-6xl md:text-8xl lg:text-9xl md:leading-150 text-center md:text-left">
             Contáctanos
         </h1>
-        <span class="mx-4 text-3xl">7P Marketing, agencia de marketing digital</span>
+        <span class="block w-full text-xl md:text-3xl text-center md:text-left">7P Marketing, agencia de marketing digital</span>
     </section>
     <section>
         <iframe src="https://snazzymaps.com/embed/343514" width="100%" height="600px" style="border:none;"></iframe>
     </section>
-    <section class=" max-w-7xl mx-auto py-36">
-        <div class="grid grid-cols-2 gap-5">
+    <section class="py-10 px-4 lg:px-0 md:py-36 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div>
                 <h3 class="font-semibold text-xl mb-3 uppercase">Dirección</h3>
                 <span class="block">Quito - Ecuador</span>
@@ -20,7 +20,7 @@
                 <span class="block">WhatsApp: 098 765 4321</span>
                 <span>Teléfono: 098 765 4321</span>
             </div>
-            <div class="mt-10">
+            <div class="md:mt-10">
                 <h3 class="font-semibold text-xl mb-3 uppercase">Trabajemos juntos</h3>
                 <span class=" block">Nos caracterizamos por trabajar con grandes empresas, ¡Que estás esperando!</span>
                  <a class="underline block" href="mailto:info@7p-marketing.com">info@7p-marketing.com</a>
@@ -28,7 +28,7 @@
             </div>
         </div>
     </section>
-    <section class=" max-w-7xl mx-auto py-16">
+    <section class="py-10 px-4 lg:px-0 md:py-16 max-w-7xl mx-auto">
         <div class="w-full md:w-1/2">
             <h3 class="font-semibold text-xl mb-3 uppercase">Formulario de contacto</h3>
             <form action="">

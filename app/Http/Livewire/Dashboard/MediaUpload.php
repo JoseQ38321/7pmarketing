@@ -19,7 +19,9 @@ class MediaUpload extends Component
 
     public function render()
     {
-        $files = File::paginate($this->perPage);
+        $files = File::/* where('file_name', 'like', '%'.$this->search.'%')
+                        -> */orderBy('created_at', 'desc')
+                        ->paginate($this->perPage);
         return view('livewire.dashboard.media-upload', compact('files'));
     }
 
