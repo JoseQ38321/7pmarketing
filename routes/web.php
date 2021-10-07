@@ -24,11 +24,11 @@ Route::get('contacto', [ContactController::class, 'index'])->name('contact');
 
 Route::get('quienes-somos', [AgencyController::class, 'index'])->name('about-us');
 
-Route::get('Blog', [BlogController::class, 'index'])->name('blog');
+Route::get('blog', [BlogController::class, 'index'])->name('blog');
 
-Route::get('Blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
-Route::get('Recursos', [ResourceController::class, 'index'])->name('resource');
+Route::get('recursos', [ResourceController::class, 'index'])->name('resource');
 
-Route::get('Recursos/{slug}', [ResourceController::class, 'show'])->name('resource.show');
+Route::get('recursos/{slug}', [ResourceController::class, 'show'])->name('resource.show');
 
