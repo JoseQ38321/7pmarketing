@@ -1,6 +1,6 @@
 <x-dashboard-layout>
     <x-slot name="header">
-        {{ __('Dashboard') }}
+        {{ __('Escritorio') }}
     </x-slot>
 
     <div class="mx-auto py-8">
