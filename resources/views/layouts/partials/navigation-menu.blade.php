@@ -25,6 +25,12 @@
             {{ __('Blogs') }}
         </x-nav-link>
     @endcan
+    @can('post.index')
+        <x-nav-link href="{{ route('categories.index') }}" :active="request()->routeIs('categories.index')">
+            <span class="material-icons-outlined h-6 w-auto mr-3">category</span>
+            {{ __('Categorias') }}
+        </x-nav-link>
+    @endcan
     @can('resource.index')
         <x-nav-link href="{{ route('resource.index') }}" :active="request()->routeIs('resource.index')">
             <span class="material-icons-outlined h-6 w-auto mr-3">file_download</span>

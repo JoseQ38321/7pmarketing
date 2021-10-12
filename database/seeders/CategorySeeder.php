@@ -15,10 +15,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Storage::deleteDirectory('categories');
-
-        Storage::makeDirectory('categories', 0755, true);
-
         Category::factory(10)->create();
     }
 }

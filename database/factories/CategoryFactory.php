@@ -23,8 +23,6 @@ class CategoryFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
-            'description' => $this->faker->text(200),
-            'image' => 'categories/'.$this->faker->image('public/storage/categories', 640, 400, null, false),
         ];
     }
 }

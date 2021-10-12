@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\MediaController;
 use App\Http\Controllers\Dashboard\MessageController;
@@ -15,6 +16,7 @@ Route::resource('user', UserController::class)->names('user');
 Route::resource('post', PostController::class)->names('post')->except('show');
 Route::resource('resource', ResourceController::class)->names('resource')->except('show');
 Route::resource('role', RoleController::class)->names('role');
+Route::resource('categories', CategoryController::class)->names('categories');
 
 Route::get('message/create/{id?}', [MessageController::class, 'create'])->name('message.create');
 Route::get('message/inbox', [MessageController::class, 'inbox'])->name('message.inbox');
